@@ -1,0 +1,328 @@
+/* Import some fonts. */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap');
+
+/* Define some variables for consistency. */
+:root {
+    /* Background image for some sight-seegin. Hopefully link won't go down. */
+    --bg-img: url('https://static.vecteezy.com/system/resources/previews/003/549/556/original/space-galaxy-background-free-vector.jpg');
+    /* Dark color for backgrounds. */
+    --bg-dark: rgb(18 18 19);
+    --bg-dark-soft: rgb(38 38 40);
+    /* Light color for backgrounds. */
+    --bg-light: rgb(204 204 204);
+    --bg-light-soft: rgb(224 224 224);
+    /* Text color for dark background. */
+    --bg-dark-text: white;
+    /* Text color for light background. */
+    --bg-light-text: black;
+    /* Text color for light background. */
+    --bg-light-text-soft: gray;
+    /* Main accent color to bring things into focus. */
+    --main: rgb(70 70 255);
+    --main-soft: rgb(70 30 125);
+}
+
+body {
+    background: var(--bg-dark) !important;
+    overflow-x: hidden !important;
+}
+
+/* Remove the linebreaks above the content. */
+body > br {
+    display: none !important;
+}
+
+/* Remove ugly table background and make it large to fit the background image behind. */
+body > table {
+    background: none !important;
+    min-height: 200px !important;
+}
+
+/* Show the background image behind the table. */
+body > table::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    min-height: inherit;
+    z-index: -100;
+    background: var(--bg-img) !important;
+    background-size: max(1600px, 125%) !important;
+    filter: hue-rotate(350deg) saturate(1) sepia(0.2);
+}
+
+/* Remove the pixely technion logo. */
+body > table a[href*=technion] img {
+    display: none !important;
+}
+
+/* Replace the old logo with a new one. */
+body > table a[href*=technion]::after {
+    display: block;
+    content: '';
+    width: 45px;
+    height: 72px;
+    background: url('https://seeklogo.com/images/T/Technion_-_Israel_Institute_of_Technology-logo-0F85462625-seeklogo.com.png') no-repeat;
+    background-size: contain;
+    filter: brightness(8);
+    transform: translateY(-10%);
+}
+
+/* Remove the ugly blue waffle box. */ 
+body > .stud-main-content {
+    background: var(--bg-dark-soft) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border: none !important;
+}
+
+.stud-main-content :is(center, .center) {
+    position: relative !important;
+}
+
+.stud-main-content :is(center, .center)::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 200vw;
+    height: 50px;
+    background: var(--bg-dark-soft);
+    z-index: -10;
+    transform: translateY(-40px) translateX(50%);
+}
+
+/* Remove the second blue waffle box, if it is there. */
+.stud-main-content .stud-main-content {
+    background: none !important;
+    margin: 0px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border: none !important;
+}
+
+/* Remove the black background of the main content. */
+div.external {
+    background: none !important;
+}
+
+/* Style the side buttons to be more slick. */
+a.menuentry {
+    background: none !important;
+    margin: 0px;
+    padding-bottom: 8px;
+    border: 0px !important;
+    transition: all 0.1s !important;
+}
+
+a.menuentry:is(:active, :focus, :hover) {
+    transform: scale(1.18);
+}
+
+a.menuentry:is(:active, :focus, :hover) span {
+    text-decoration: underline !important;
+    text-decoration-color: var(--bg-dark-text) !important;
+}
+
+a.menuentry * {
+    color: var(--bg-dark-text) !important;
+    border: 0px !important;
+}
+
+/* Move language toolbar to the tippedy-top! */
+body > .stud-main-content ~ div[style]:not([name]) {
+    top: 0px !important;
+}
+
+/* Remove the text about unsubscribing from mails. */
+body > .stud-main-content ~ div[style]:not([name]) td {
+    color: transparent !important;
+}
+
+/* Style the navigation menu. */
+:is(body > form, body > .stud-main-content > form) {
+    box-sizing: border-box !important;
+    position: sticky !important;
+    top: 0px !important;
+    z-index: 2 !important;
+    background: var(--bg-dark) !important;
+}
+
+body > .stud-main-content > form {
+  top: 20px !important;
+  z-index: 1 !important;
+}
+
+/* Hide unwanted td's in the pages toolbar. */
+:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td:is(:nth-child(2n), :first-child, :last-of-type) {
+    display: none !important;
+}
+
+:is(body > form, body > .stud-main-content > form) > table {
+    width: fit-content !important;
+    background: var(--main) !important;
+}
+
+:is(body > form, body > .stud-main-content > form) tr {
+    display: flex !important;
+    justify-content: flex-start;
+    align-items: space-between;
+}
+
+:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td {
+    min-width: 80px !important;
+    background: var(--bg-dark) !important;
+    border-radius: 0px !important;
+    padding: 1px 8px !important;
+    transition: transform 0.1s, border 0.1s !important;
+}
+
+:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td:is([background*=active], :hover) {
+    background: var(--main) !important;
+    transform: translateY(4px) !important;
+    border-radius: 4px !important;
+}
+
+.highlighttab, .tab:hover {
+    display: flex !important;
+    width: 100% !important;
+    height: 100% !important;
+    justify-content: center;
+    align-items: center;
+    font-weight: inherit !important;
+    color: var(--bg-dark-text) !important;
+}
+
+/* Make button links larger and easier to press. */
+td[nowrap=""][background*=inactive], .tab {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+}
+
+:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td > table {
+    display: block !important;
+    width: 100% !important;
+    background: none !important;
+}
+
+:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td > table > tbody {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td > table > tbody > tr {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td > table tr * {
+    background: none !important;
+    color: var(--bg-dark-text) !important;
+    min-width: 0px !important;
+    min-height: 0px !important;
+}
+
+/* Move the quote from the bottom of the page to the top! */
+center span.white-text {
+    position: absolute !important;
+    right: 50% !important;
+    top: 145px !important;
+    transform: translateX(50%) !important;
+    font-family: 'Roboto', 'Arial', sans-serif !important;
+}
+
+/* Remove the line break at the start of the quote, if it is shown. */
+center span.white-text br:first-child {
+    display: none !important;
+}
+
+/* Remove the date at the top. */
+span.date {
+    display: none !important;
+}
+
+/* Make unselected languages less noticable. */
+.menu-button[name^=switch_to_]:not(.current-lang) {
+    color: var(--bg-light-text-soft) !important;
+}
+
+/* Restyle language buttons. */
+.menu-button[name^=switch_to_] {
+    border: none !important;
+    cursor: pointer !important;
+    background: var(--bg-light) !important;
+}
+
+.menu-button[href*=help] {
+    border: none !important;
+}
+
+.menu-button.logout {
+    border: none !important;
+    background: var(--main) !important;;
+}
+
+.semester {
+    font-size: 1.5em !important;
+    transform: translateY(-0.3em) !important;
+}
+
+.all-parts {
+    background: var(--main-soft) !important;
+    border-radius: 30px !important;
+    margin-top: 20px !important;
+}
+
+.all-parts * {
+    background: none !important;
+}
+
+.top-part {
+    margin-top: -22px !important;
+    margin-bottom: 15px !important;
+}
+
+.top-part .barback {
+    display: none !important;
+}
+
+.top-part .coursenameback {
+    transform: scale(1.4) translateY(10px) !important;
+}
+
+#maincontent {
+    background: var(--bg-light) !important;
+    margin: 10px !important;
+    border-radius: 10px !important;
+}
+
+/* Make the main content more readable. */
+
+#maincontent h1 {
+    text-align: center !important;
+    font-size: 2.5em !important;
+    margin-bottom: -15px !important;
+}
+
+#maincontent .line {
+    display: none !important;
+}
+
+/* Style content lists. */
+.ticket:nth-child(2n) {
+    background: var(--bg-light-soft) !important;
+    border: none !important;
+}
+

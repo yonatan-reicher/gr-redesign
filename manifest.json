@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "GR++ Redesign",
+    "version": "1.0",
+    "description": "The gr++ site looks horrible. Let's change that!",
+    "icons": {
+        "48": "content/technion-48-48.png"
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://grades.cs.technion.ac.il/*"
+            ],
+            "run_at": "document_start",
+            "css": [
+                "src/style.css"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        { 
+            "matches": [
+                "*://grades.cs.technion.ac.il/*"
+            ],
+            "resources": [
+                "src/style.css",
+                "content/*"
+            ]
+        }
+    ]
+}
