@@ -6,12 +6,9 @@
     "icons": {
         "48": "content/technion-48-48.png"
     },
-    "permissions": [
-        "activeTab"
-    ],
     "browser_specific_settings": {
         "gecko": {
-            "id": "{f8d8f5e1-c95e-4833-9f4c-3fd5972e6619}",
+            "id": "{f8d8f5e1-c95e-4833-9f4c-3fd5972e6619}"
         }
     },
     "content_scripts": [
