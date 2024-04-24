@@ -1,30 +1,58 @@
 /* Import some fonts. */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wdth,wght@62.5..100,100..900&family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap');
 
 /* Define some variables for consistency. */
 :root {
     /* Background image for some sight-seegin. Hopefully link won't go down. */
     --bg-img: url('https://static.vecteezy.com/system/resources/previews/003/549/556/original/space-galaxy-background-free-vector.jpg');
+    /* Palettes from the image: */
+    /*
+    --dark-accent: #870058;
+    --light-accent: #D1495B;
+    --accent-2: #FFBA49;
+    --black: #0F0A0A;
+    --gray: #191919;
+    --white: #FFFEF8;
+    */
+    --dark-accent: #1e2124;
+    --light-accent: #9289aa;
+    --accent-2: #FFBA49;
+    --black: #111517;
+    --gray: #282b30;
+    --white: #F8FEFA;
+
+    /* TODO: Transition to only using these. */
+    --bg-1: #1a1a1d;
+    --bg-2: #282b30;
+    --bg-3: #36393e;
+    --bg-4: #424549;
+    --accent: #7289dc;
+    --special: #fcba03;
+    --text: white;
+
     /* Dark color for backgrounds. */
-    --bg-dark: rgb(18 18 19);
-    --bg-dark-soft: rgb(38 38 40);
+    --bg-dark: var(--black);
+    --bg-dark-soft: var(--gray);
     /* Light color for backgrounds. */
-    --bg-light: rgb(204 204 204);
-    --bg-light-soft: rgb(224 224 224);
+    --bg-light: var(--white);
+    --bg-light-soft: var(--gray);
     /* Text color for dark background. */
-    --bg-dark-text: white;
+    --bg-dark-text: var(--white);
     /* Text color for light background. */
-    --bg-light-text: black;
+    --bg-light-text: var(--black);
     /* Text color for light background. */
-    --bg-light-text-soft: gray;
+    --bg-light-text-soft: var(--gray);
     /* Main accent color to bring things into focus. */
-    --main: rgb(70 70 255);
-    --main-soft: rgb(70 30 125);
+    --main: var(--accent);
+    --main-soft: var(--dark-accent);
 }
 
 body {
     background: var(--bg-dark) !important;
     overflow-x: hidden !important;
+    font-family: 'Noto Sans Hebrew', 'Noto Sans', 'Alef', 'Arial', sans-serif !important;
 }
 
 /* Remove the linebreaks above the content. */
@@ -70,9 +98,16 @@ body > table a[href*=technion]::after {
     transform: translateY(-10%);
 }
 
+body > table > tbody > tr > td:nth-child(2) {
+    animation: 1.7s ease-out 0s 1 appearFromAbove;
+}
+body > table > tbody > tr > td:nth-child(2) * {
+    animation: 2s ease-out 0s 1 appearFromAbove;
+}
+
 /* Remove the ugly blue waffle box. */ 
 body > .stud-main-content {
-    background: var(--bg-dark-soft) !important;
+    background: var(--bg-1) !important;
     margin: 0 !important;
     padding: 0 !important;
     width: 100% !important;
@@ -100,6 +135,7 @@ body > .stud-main-content {
 .stud-main-content .stud-main-content {
     background: none !important;
     margin: 0px !important;
+    padding: 0px !important;
     width: 100% !important;
     box-sizing: border-box !important;
     border: none !important;
@@ -112,11 +148,16 @@ div.external {
 
 /* Style the side buttons to be more slick. */
 a.menuentry {
-    background: none !important;
+    background: var(--bg-3) !important;
     margin: 0px;
+    margin-bottom: 4px;
     padding-bottom: 8px;
     border: 0px !important;
+    border-radius: 4px !important;
     transition: all 0.1s !important;
+}
+div.menuentry {
+    width: auto !important;
 }
 
 a.menuentry:is(:active, :focus, :hover) {
@@ -143,39 +184,48 @@ body > .stud-main-content ~ div[style]:not([name]) td {
     color: transparent !important;
 }
 
-/* Style the navigation menu. */
+/* Style the navigation menu (topbar). */
 :is(body > form, body > .stud-main-content > form) {
     box-sizing: border-box !important;
     position: sticky !important;
     top: 0px !important;
     z-index: 2 !important;
-    background: var(--bg-dark) !important;
+    background: var(--bg-1) !important;
 }
 
+/* The form under the main content is the topbar showing the coures's names
+ * (below the element that is selected in the next selector) */
 body > .stud-main-content > form {
-  top: 20px !important;
-  z-index: 1 !important;
+    top: 20px !important;
+    z-index: 1 !important;
+    background: var(--bg-1) !important;
+}
+
+/* This is the top part of the topbar. These are some other buttons that act as
+ * main content selectors (They are 'courses', 'calendar', 'messages', 'settings' ecetra...) */
+body > form {
 }
 
 /* Hide unwanted td's in the pages toolbar. */
 :is(body > form, body > .stud-main-content > form) > table > tbody > tr > td:is(:nth-child(2n), :first-child, :last-of-type) {
     display: none !important;
+    width: 100% !important;
 }
 
 :is(body > form, body > .stud-main-content > form) > table {
-    width: fit-content !important;
-    background: var(--main) !important;
+    width: 100% !important;
 }
 
 :is(body > form, body > .stud-main-content > form) tr {
     display: flex !important;
     justify-content: flex-start;
     align-items: space-between;
+    width: 100% !important;
 }
 
 :is(body > form, body > .stud-main-content > form) > table > tbody > tr > td {
     min-width: 80px !important;
-    background: var(--bg-dark) !important;
+    background: none !important;
     border-radius: 0px !important;
     padding: 1px 8px !important;
     transition: transform 0.1s, border 0.1s !important;
@@ -184,7 +234,35 @@ body > .stud-main-content > form {
 :is(body > form, body > .stud-main-content > form) > table > tbody > tr > td:is([background*=active], :hover) {
     background: var(--main) !important;
     transform: translateY(4px) !important;
-    border-radius: 4px !important;
+    border-radius: 8px !important;
+}
+
+/* This ::after element is responsible for making the buttons at the top of the topbar look like book marks (not rounded at the top).
+ * We need an after and not a border radius of 0px only at the top so that we can have the buttons drag down with translateY and not have them disconnect from the ceiling of their container. */
+:is(body > form) > table > tbody > tr > td::after {
+    content: '';
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    transform: translateY(0px);
+    background: none !important;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    display: hidden;
+    transition: transform 0.1s !important;
+}
+
+:is(body > form) > table > tbody > tr > td:is([background*=active], :hover)::after {
+    transform: translateY(-4px);
+    display: unset;
+    background: var(--main) !important;
+}
+
+/* Tabs are the buttons that appear in the topbar. */
+.tab {
+    /* This line overrides the element style that some buttons have and makes no sense! */
+    max-width: unset !important;
 }
 
 .highlighttab, .tab:hover {
@@ -238,13 +316,13 @@ td[nowrap=""][background*=inactive], .tab {
 center span.white-text {
     position: absolute !important;
     right: 50% !important;
-    top: 145px !important;
+    top: 155px !important;
     transform: translateX(50%) !important;
     font-family: 'Roboto', 'Arial', sans-serif !important;
 }
 
 /* Remove the line break at the start of the quote, if it is shown. */
-center span.white-text br:first-child {
+center span.white-text br {
     display: none !important;
 }
 
@@ -256,13 +334,14 @@ span.date {
 /* Make unselected languages less noticable. */
 .menu-button[name^=switch_to_]:not(.current-lang) {
     color: var(--bg-light-text-soft) !important;
+    background: var(--bg-3) !important;
 }
 
 /* Restyle language buttons. */
 .menu-button[name^=switch_to_] {
     border: none !important;
     cursor: pointer !important;
-    background: var(--bg-light) !important;
+    background: var(--bg-2) !important;
 }
 
 .menu-button[href*=help] {
@@ -280,23 +359,41 @@ span.date {
 }
 
 .all-parts {
-    background: var(--main-soft) !important;
-    border-radius: 30px !important;
-    margin-top: 20px !important;
+    background: var(--bg-2) !important;
+    border-radius: 0px !important;
+    margin: 0px !important;
 }
 
 .all-parts * {
     background: none !important;
 }
 
+.all-parts #mainmenu {
+    height: fit-content !important;
+    position: sticky !important;
+    top: 46px;
+    padding-left: 12px;
+    padding-right: 12px;
+    flex-basis: 105px !important;
+    width: 97px !important;
+}
 
 .all-parts .titlebarname {
     color: white !important;
 }
 
+.all-parts .titlebarname * {
+    color: var(--bg-dark-text);
+}
+
 .top-part {
     margin-top: -22px !important;
     margin-bottom: 15px !important;
+}
+
+/* These divs are used to select accessability settings I think? */
+.top-part > div {
+    display: none !important;
 }
 
 .top-part .barback {
@@ -308,9 +405,17 @@ span.date {
 }
 
 #maincontent {
-    background: var(--bg-light) !important;
-    margin: 10px !important;
-    border-radius: 10px !important;
+    margin: 0px !important;
+    border-radius: 0px !important;
+    flex-shrink: 1 !important;
+}
+
+#maincontent * {
+    color: var(--bg-dark-text);
+}
+
+#maincontent a {
+    color: lightblue;
 }
 
 /* Make the main content more readable. */
@@ -321,13 +426,104 @@ span.date {
     margin-bottom: -15px !important;
 }
 
+h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
+    color: var(--main) !important;
+}
+
 #maincontent .line {
     display: none !important;
 }
 
+.ticket {
+    background: var(--bg-4) !important;
+    border-radius: 8px !important;
+    margin-bottom: 8px !important;
+    position: relative;
+    padding-top: 28px !important;
+}
+
+.ticket > :first-child {
+    width: 100%;
+}
+
+.ticket > :first-child * {
+    font-size: 1rem;
+}
+
+.ticket > :first-child h2 * {
+    font-size: 1.1rem;
+}
+
 /* Style content lists. */
 .ticket:nth-child(2n) {
-    background: var(--bg-light-soft) !important;
+    /*background: var(--bg-light-soft) !important;*/
     border: none !important;
 }
 
+/* This is the 'posted on / updated on' part at the bottom of the ticket. */
+.ticket > table:nth-child(2) {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: fit-content;
+}
+
+/* #maincontent is needed to be more specific! */
+#maincontent .ticket > table:nth-child(2) * {
+    color: var(--main);
+}
+
+
+/* Add a gear icon to the settings topbar button */
+/*
+:nth-child(3) {
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+</style>
+}
+*/
+
+@keyframes appearFromAbove {
+    0% {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+[href*=yanivhamo] {
+    position: absolute;
+    top: 8px;
+    left: 80px;
+    transform: scale(.5) translateX(-50%);
+    z-index: 10;
+}
+
+[alt=new] {
+    opacity: 0;
+}
+
+.display-ticket-image {
+    
+}
+
+.display-ticket-image:has([alt=new])::before {
+    position: absolute;
+    content: 'new';
+    color: var(--text);
+    background: var(--special);
+    border-radius: 4px;
+    font-weight: bold;
+    padding-left: 4px;
+    padding-right: 4px;
+    top: 28px;
+    right: -18px;
+}
