@@ -216,12 +216,20 @@ body > form {
     width: 100% !important;
 }
 
-:is(body > form, body > .stud-main-content > form) tr {
+body > form tr {
     display: flex !important;
     justify-content: flex-start;
-    align-items: space-between;
     width: 100% !important;
 }
+
+.stud-main-content > form tr {
+    display: flex !important;
+    justify-content: flex-start;
+    width: 100% !important;
+    flex-wrap: wrap;
+}
+
+// div.stud-main-content:nth-child(5) > form:nth-child(1) > table:nth-child(5) > tbody:nth-child(1) > tr:nth-child(1)
 
 :is(body > form, body > .stud-main-content > form) > table > tbody > tr > td {
     min-width: 80px !important;
