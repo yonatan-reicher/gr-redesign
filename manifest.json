@@ -1,10 +1,11 @@
 {
     "manifest_version": 3,
     "name": "GR++ Redesign",
-    "version": "1.0",
+    "version": "1.1",
     "description": "The gr++ site looks horrible. Let's change that!",
     "icons": {
-        "48": "content/technion-48-48.png"
+        "48": "content/technion-48-48.png",
+        "128": "content/technion-128-128.png"
     },
     "browser_specific_settings": {
         "gecko": {
@@ -20,6 +21,15 @@
             "css": [
                 "src/style.css"
             ]
+        },
+        {
+            "matches": [
+                "*://grades.cs.technion.ac.il/*"
+            ],
+            "run_at": "document_end",
+            "js": [
+                "src/fix-course-material-button.js"
+            ]
         }
     ],
     "web_accessible_resources": [
@@ -28,7 +38,7 @@
                 "*://grades.cs.technion.ac.il/*"
             ],
             "resources": [
-                "src/style.css",
+                "src/*",
                 "content/*"
             ]
         }
