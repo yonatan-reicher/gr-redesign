@@ -217,10 +217,9 @@ body > form {
     width: 100% !important;
 }
 
-:is(body > form, body > .stud-main-content > form) tr {
+body > form tr {
     display: flex !important;
     justify-content: flex-start;
-    align-items: space-between;
     width: 100% !important;
 }
 
