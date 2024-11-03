@@ -28,7 +28,8 @@
             ],
             "run_at": "document_end",
             "js": [
-                "src/fix-course-material-button.js"
+                "src/fix-course-material-button.js",
+                "src/add-semester-select.js"
             ]
         }
     ],
