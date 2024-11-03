@@ -19,8 +19,28 @@ function getCurrentYearAndSemester() {
     return { year, semester };
 }
 
+// Returns a string like '202303' for the given year and semester.
+function getSEMString({ year, semester }) {
+    console.assert(semester >= 1 && semester <= 3);
+    console.assert(typeof semester === 'number');
+    return `${year}0${semester}`;
+}
+
 function onGoButtonClick({ year, semester }) {
-    console.log('onGoButtonClick', year, semester);
+    const cookieValue = getCookieValue();
+    const sem = getSEMString({ year, semester });
+
+    // Create a hidden element to put a form in.
+    const el = document.createElement('div');
+    el.style.display = 'none';
+    document.body.appendChild(el);
+    el.innerHTML = `
+        <form action="grades.cgi" method="post">
+            <input type="hidden" name="COOKIE" value="${cookieValue}">
+            <input type="hidden" name="SEM" value="${sem}">
+        </form>
+    `;
+    el.querySelector('form').submit();
 }
 
 function createSemesterSelect() {
@@ -68,14 +88,3 @@ function createSemesterSelect() {
 }
 
 document.body.appendChild(createSemesterSelect());
-
-
-/*
-semesterSelect.innerHTML = `
-    <form action="grades.cgi" method="post">
-        <input type="hidden" name="COOKIE" value="${cookieValue}">
-        <input type="hidden" name="SEM" value="202303">
-        <input type="image" src="/Images/StudImages/next.gif" border="0" alt="Previous Semester" onfocus="this.blur()">
-    </form>
-`;
-*/
