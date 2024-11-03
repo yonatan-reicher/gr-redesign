@@ -225,6 +225,9 @@ body > form tr {
 
 /* Wrap the courses in the topbar. */
 body > .stud-main-content > form > table > tbody > tr {
+    display: flex !important;
+    justify-content: flex-start;
+    width: 100% !important;
     flex-wrap: wrap !important;
 }
 
