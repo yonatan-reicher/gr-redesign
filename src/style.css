@@ -182,6 +182,7 @@ body > .stud-main-content ~ div[style]:not([name]) {
 /* Remove the text about unsubscribing from mails. */
 body > .stud-main-content ~ div[style]:not([name]) td {
     color: transparent !important;
+    text-wrap: nowrap;
 }
 
 /* Style the navigation menu (topbar). */
@@ -221,6 +222,11 @@ body > form {
     justify-content: flex-start;
     align-items: space-between;
     width: 100% !important;
+}
+
+/* Wrap the courses in the topbar. */
+body > .stud-main-content > form > table > tbody > tr {
+    flex-wrap: wrap !important;
 }
 
 :is(body > form, body > .stud-main-content > form) > table > tbody > tr > td {
@@ -353,6 +359,11 @@ span.date {
     background: var(--main) !important;;
 }
 
+.menu-button {
+    /* Needed on some buttons on small screens */
+    text-wrap: nowrap;
+}
+
 .semester {
     font-size: 1.5em !important;
     transform: translateY(-0.3em) !important;
@@ -362,6 +373,7 @@ span.date {
     background: var(--bg-2) !important;
     border-radius: 0px !important;
     margin: 0px !important;
+    width: 100%;
 }
 
 .all-parts * {
