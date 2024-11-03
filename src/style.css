@@ -539,3 +539,31 @@ h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
     top: 28px;
     right: -18px;
 }
+
+/* Semester select added by add-semester-select.js */
+.semester-select {
+    position: absolute;
+    top: 0;
+    left: 150px;
+    padding: 8px;
+}
+
+.semester-select [name] {
+    background: var(--bg-3);
+    color: var(--bg-dark-text);
+    border: none;
+    border-radius: 4px;
+    padding: 4px;
+    width: 64px;
+    height: 25px;
+    box-sizing: border-box;
+}
+
+.semester-select button {
+    background: var(--main);
+    color: var(--bg-dark-text);
+    border: none;
+    border-radius: 4px;
+    padding: 4px;
+    width: 100%;
+}

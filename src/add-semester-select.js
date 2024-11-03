@@ -13,8 +13,8 @@ function getCurrentYearAndSemester() {
     console.assert(2 <= yearSemesterValues.length && yearSemesterValues.length <= 4);
     // One of the values is the previous one, skip it and we get the current.
     const current = yearSemesterValues[1];
-    const year = current.slice(0, 4);
-    const semester = current.slice(5);
+    const year = parseInt(current.slice(0, 4)) + 1;
+    const semester = parseInt(current.slice(5));
 
     return { year, semester };
 }
@@ -23,7 +23,7 @@ function getCurrentYearAndSemester() {
 function getSEMString({ year, semester }) {
     console.assert(semester >= 1 && semester <= 3);
     console.assert(typeof semester === 'number');
-    return `${year}0${semester}`;
+    return `${year - 1}0${semester}`;
 }
 
 function onGoButtonClick({ year, semester }) {
