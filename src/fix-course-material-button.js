@@ -1,14 +1,13 @@
-selector = '#mainmenu > a.menuentry:nth-child(4) .menuentry.lang-he';
+selector = '#mainmenu > a.menuentry .menuentry.lang-he';
 badText = 'חומר המקצוע';
 goodText = 'חומר הקורס';
 
-function getButton() {
-    return document.querySelector(selector);
+function getButtons() {
+    return document.querySelectorAll(selector);
 }
 
 function fixButtonText() {
-    var button = getButton();
-    if (button) {
+    for (const button of getButtons()) {
         button.innerHTML = button.innerHTML.replace(badText, goodText);
     }
 }
