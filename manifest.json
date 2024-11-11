@@ -1,11 +1,12 @@
 {
     "manifest_version": 3,
     "name": "GR++ Redesign",
-    "version": "1.1",
-    "description": "The gr++ site looks horrible. Let's change that!",
+    "version": "1.2",
+    "description": "Modern restyling for the GR++ site for Technion students.",
     "icons": {
         "48": "content/technion-48-48.png",
-        "128": "content/technion-128-128.png"
+        "128": "content/technion-128-128.png",
+        "300": "content/technion-300-300.png"
     },
     "browser_specific_settings": {
         "gecko": {
