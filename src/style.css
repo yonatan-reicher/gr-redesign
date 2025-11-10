@@ -231,6 +231,11 @@ body > .stud-main-content > table > tbody > tr {
     flex-wrap: wrap !important;
 }
 
+/* Make the topbar's height react on overflow on wrap. */
+table:has( .tab) > tbody > tr {
+    height: unset !important;
+}
+
 table:has( .tab) > tbody > tr > td {
     min-width: 80px !important;
     background: none !important;
