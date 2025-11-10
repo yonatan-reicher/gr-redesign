@@ -61,13 +61,13 @@ body > br {
 }
 
 /* Remove ugly table background and make it large to fit the background image behind. */
-body > table {
+body > table:first-child {
     background: none !important;
     min-height: 200px !important;
 }
 
 /* Show the background image behind the table. */
-body > table::after {
+body > table:first-child::after {
     content: '';
     position: fixed;
     top: 0;
@@ -82,12 +82,12 @@ body > table::after {
 }
 
 /* Remove the pixely technion logo. */
-body > table a[href*=technion] img {
+body > table:first-child a[href*=technion] img {
     display: none !important;
 }
 
 /* Replace the old logo with a new one. */
-body > table a[href*=technion]::after {
+body > table:first-child a[href*=technion]::after {
     display: block;
     content: '';
     width: 45px;
@@ -98,10 +98,10 @@ body > table a[href*=technion]::after {
     transform: translateY(-10%);
 }
 
-body > table > tbody > tr > td:nth-child(2) {
+body > table:first-child > tbody > tr > td:nth-child(2) {
     animation: 1.7s ease-out 0s 1 appearFromAbove;
 }
-body > table > tbody > tr > td:nth-child(2) * {
+body > table:first-child > tbody > tr > td:nth-child(2) * {
     animation: 2s ease-out 0s 1 appearFromAbove;
 }
 
@@ -186,7 +186,7 @@ body > .stud-main-content ~ div[style]:not([name]) td {
 }
 
 /* Style the navigation menu (topbar). */
-:is(body > form, body > .stud-main-content > form) {
+table:has( .tab) {
     box-sizing: border-box !important;
     position: sticky !important;
     top: 0px !important;
@@ -194,9 +194,9 @@ body > .stud-main-content ~ div[style]:not([name]) td {
     background: var(--bg-1) !important;
 }
 
-/* The form under the main content is the topbar showing the coures's names
+/* The table under the main content is the topbar showing the coures's names
  * (below the element that is selected in the next selector) */
-body > .stud-main-content > form {
+body > .stud-main-content > table {
     top: 20px !important;
     z-index: 1 !important;
     background: var(--bg-1) !important;
@@ -204,34 +204,34 @@ body > .stud-main-content > form {
 
 /* This is the top part of the topbar. These are some other buttons that act as
  * main content selectors (They are 'courses', 'calendar', 'messages', 'settings' ecetra...) */
-body > form {
+body > table:has( .tab) {
 }
 
 /* Hide unwanted td's in the pages toolbar. */
-:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td:is(:nth-child(2n), :first-child, :last-of-type) {
+table:has( .tab) > tbody > tr > td:is(:nth-child(2n), :first-child, :last-of-type) {
     display: none !important;
     width: 100% !important;
 }
 
-:is(body > form, body > .stud-main-content > form) > table {
+table:has( .tab) {
     width: 100% !important;
 }
 
-body > form tr {
+body > table:has( .tab) tr {
     display: flex !important;
     justify-content: flex-start;
     width: 100% !important;
 }
 
 /* Wrap the courses in the topbar. */
-body > .stud-main-content > form > table > tbody > tr {
+body > .stud-main-content > table > tbody > tr {
     display: flex !important;
     justify-content: flex-start;
     width: 100% !important;
     flex-wrap: wrap !important;
 }
 
-:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td {
+table:has( .tab) > tbody > tr > td {
     min-width: 80px !important;
     background: none !important;
     border-radius: 0px !important;
@@ -239,7 +239,12 @@ body > .stud-main-content > form > table > tbody > tr {
     transition: transform 0.1s, border 0.1s !important;
 }
 
-:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td:is([background*=active], :hover) {
+/* Remove ugly button background */
+table:has( .tab) > tbody > tr > td > div {
+    background: none !important;
+}
+
+table:has( .tab) > tbody > tr > td:is([background*=active], :hover) {
     background: var(--main) !important;
     transform: translateY(4px) !important;
     border-radius: 8px !important;
@@ -247,7 +252,7 @@ body > .stud-main-content > form > table > tbody > tr {
 
 /* This ::after element is responsible for making the buttons at the top of the topbar look like book marks (not rounded at the top).
  * We need an after and not a border radius of 0px only at the top so that we can have the buttons drag down with translateY and not have them disconnect from the ceiling of their container. */
-:is(body > form) > table > tbody > tr > td::after {
+body > table:has( .tab) > tbody > tr > td::after {
     content: '';
     width: 100%;
     height: 50%;
@@ -261,7 +266,7 @@ body > .stud-main-content > form > table > tbody > tr {
     transition: transform 0.1s !important;
 }
 
-:is(body > form) > table > tbody > tr > td:is([background*=active], :hover)::after {
+body > table:has( .tab) > tbody > tr > td:is([background*=active], :hover)::after {
     transform: translateY(-4px);
     display: unset;
     background: var(--main) !important;
@@ -293,19 +298,19 @@ td[nowrap=""][background*=inactive], .tab {
     padding: 0 !important;
 }
 
-:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td > table {
+table:has( .tab) > tbody > tr > td > table {
     display: block !important;
     width: 100% !important;
     background: none !important;
 }
 
-:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td > table > tbody {
+table:has( .tab) > tbody > tr > td > table > tbody {
     display: block !important;
     width: 100% !important;
     max-width: 100% !important;
 }
 
-:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td > table > tbody > tr {
+table:has( .tab) > tbody > tr > td > table > tbody > tr {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -313,7 +318,7 @@ td[nowrap=""][background*=inactive], .tab {
     max-width: 100% !important;
 }
 
-:is(body > form, body > .stud-main-content > form) > table > tbody > tr > td > table tr * {
+table:has( .tab) > tbody > tr > td > table tr * {
     background: none !important;
     color: var(--bg-dark-text) !important;
     min-width: 0px !important;

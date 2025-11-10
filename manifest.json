@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "GR++ Redesign",
-    "version": "1.3",
+    "version": "1.4",
     "description": "Modern restyling for the GR++ site for Technion students.",
     "icons": {
         "48": "content/technion-48-48.png",
@@ -10,7 +10,10 @@
     },
     "browser_specific_settings": {
         "gecko": {
-            "id": "{f8d8f5e1-c95e-4833-9f4c-3fd5972e6619}"
+            "id": "{f8d8f5e1-c95e-4833-9f4c-3fd5972e6619}",
+            "data_collection_permissions": {
+                "required": ["none"]
+            }
         }
     },
     "content_scripts": [
