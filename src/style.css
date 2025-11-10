@@ -92,9 +92,9 @@ body > table:first-child a[href*=technion]::after {
     content: '';
     width: 45px;
     height: 72px;
-    background: url('https://seeklogo.com/images/T/Technion_-_Israel_Institute_of_Technology-logo-0F85462625-seeklogo.com.png') no-repeat;
+    background: url('https://upload.wikimedia.org/wikipedia/he/7/70/Technion_Logo.png') no-repeat;
     background-size: contain;
-    filter: brightness(8);
+    filter: invert(1) brightness(2);
     transform: translateY(-10%);
 }
 
