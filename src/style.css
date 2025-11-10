@@ -52,7 +52,7 @@
 body {
     background: var(--bg-dark) !important;
     overflow-x: hidden !important;
-    font-family: 'Noto Sans Hebrew', 'Noto Sans', 'Alef', 'Arial', sans-serif !important;
+    /* font-family: 'Noto Sans Hebrew', 'Noto Sans', 'Alef', 'Arial', sans-serif !important; */
 }
 
 /* Remove the linebreaks above the content. */
